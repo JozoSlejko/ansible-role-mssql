@@ -14,12 +14,4 @@
   become: yes
   ignore_errors: yes
 
-- name: set memory.memorylimitmb
-  command: /opt/mssql/bin/mssql-conf set memory.memorylimitmb {{ mssql_memory_memorylimitmb }}
-  become: yes
-  notify: restart_mssql
-
-- name: enable sql server agent
-  command: /opt/mssql/bin/mssql-conf set sqlagent.enabled true
-  become: yes
-  notify: restart_mssql
+- include_tasks: config.yml
